@@ -9,3 +9,4 @@ public interface Vehicle {
 	public void stop();
 
 }
+
