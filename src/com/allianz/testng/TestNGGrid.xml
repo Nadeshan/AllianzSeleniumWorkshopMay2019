@@ -1,0 +1,8 @@
+<suite name="My First Grid" parallel="methods" thread-count="2">
+	<test name="Google Search">
+		<classes>
+			<!-- This is my comment -->
+			<class name = "com.allianz.testng.GoogleSearchwithGrid"/>
+		</classes>
+	</test>
+</suite>

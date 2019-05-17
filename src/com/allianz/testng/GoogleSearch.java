@@ -29,8 +29,7 @@ public class GoogleSearch extends TestNGBase{
 		e = driver.findElement(By.cssSelector("a > h3.LC20lb"));
 		String actual = e.getText();
 		
-		Assert.assertEquals(actual, expectedresult);
-		
+		Assert.assertEquals(actual, expectedresult);	
 	}
 	
 	@Test
