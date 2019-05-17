@@ -13,7 +13,7 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class POMGoogleSearch extends POMBase{
+public class POMExcelRead extends POMBase{
 	
 	@Test(dataProvider="getDatafromExcel")
 	public void searchAndVerify(String searchstring, String expectedresult) throws InterruptedException {
@@ -29,30 +29,27 @@ public class POMGoogleSearch extends POMBase{
 		Assert.assertEquals(actualresult, expectedresult);
 	}
 	
-//	@DataProvider
-//	public Object[][] getData() {
-//		// rows - number of time test has to be repeated
-//		// cols - number of parameters in test data
-//		Object[][] data = new Object[3][2];
-//		// 1st row
-//		data[0][0] = "Selenium";
-//		data[0][1] = "Selenium - Web Browser Automation";
-//		// 2nd row 
-//		data[1][0] = "TestNG";
-//		data[1][1] = "TestNG - Welcome";
-//		
-//		// 3rd row 
-//		data[2][0] = "POM";
-//		data[2][1] = "POM Wonderful";
-//		
-//		return data;
-//	}
-	
 	@DataProvider
 	public Object[][] getDatafromExcel() throws IOException {
 		// rows - number of time test has to be repeated
 		// cols - number of parameters in test data
-		Object[][] data = readExcelData("/Users/Ameya/Projects/AllianzSeleniumWorkshop/src/com/allianz/testng/RediffAccount.xlsx");
+		
+		//Please keep your Test Data excel file in the project base folder
+		//Make sure that the excel file does not have any extra rows or columns. To ensure this,
+		//select and remove / delete some blank columns on the right and some blank rows on 
+		//the bottom. This will ensure that there is no unwanted data.
+		
+		//For some reason (bug in POI), it identifies 1 column less that what is required. 
+		//So, I have added a blank column (with a header) to the right called Remarks
+		String currentDirectory = System.getProperty("user.dir");
+		String datafile = null;
+		if(System.getProperty("os.name").toLowerCase().contains("mac")) {
+			datafile =currentDirectory+ "/src/GoogleSearchData.xlsx";
+		}
+		else {
+			datafile =currentDirectory+ "\\src\\GoogleSearchData.xlsx";
+		}
+		Object[][] data = readExcelData(datafile);
 		
 		return data;
 	}
@@ -62,8 +59,6 @@ public class POMGoogleSearch extends POMBase{
 	{
 		System.out.println("abc");
 		String sheetName = "Sheet1";
-		
-	
 		
 		File file =	new File(fileName);
 		//Create an object of FileInputStream class to read excel file
@@ -87,7 +82,7 @@ public class POMGoogleSearch extends POMBase{
 		 int rowCount = mySheet.getLastRowNum();
 		 int colCount = mySheet.getRow(0).getPhysicalNumberOfCells();
 		 colCount = colCount -1;
-		 System.out.println("No of rows " + rowCount + "No of cols " + colCount);
+		 System.out.println("No of rows: " + rowCount + ". No of cols: " + colCount);
          Object[][] object = new Object[rowCount][colCount];
      	 
          for (int i = 0; i < rowCount; i++) {
