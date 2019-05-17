@@ -1,0 +1,8 @@
+<suite name="Parallel Suite" parallel="methods" thread-count="5" verbose="3">
+	<test name="Parallel in same class">
+		<classes>
+			<class name="com.allianz.testng.ParallelTests"/>
+			<class name="com.allianz.testng.TestNGPriorities"/>
+		</classes>
+	</test>
+</suite>

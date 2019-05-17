@@ -1,0 +1,7 @@
+<suite name="All Tests">
+	<test name="All tests inside testng package">
+		<packages>
+			<package name="com.allianz.testng"/>
+		</packages>
+	</test>
+</suite>

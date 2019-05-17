@@ -1,0 +1,14 @@
+<suite name="Parallel Selenium Without Grid" parallel="tests" thread-count="2" verbose="3">
+	<test name="Firefox Browser">
+		<parameter name="browser" value="Firefox"/>
+		<classes>
+			<class name="com.allianz.testng.GmailError"/>
+		</classes>
+	</test>
+	<test name="Chrome Browser">
+		<parameter name="browser" value="Chrome"/>
+		<classes>
+			<class name="com.allianz.testng.GmailError"/>
+		</classes>
+	</test>
+</suite>

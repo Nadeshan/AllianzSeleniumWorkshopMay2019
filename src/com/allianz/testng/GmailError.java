@@ -13,6 +13,8 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class GmailError {
@@ -27,9 +29,11 @@ WebDriver driver;
 		System.setProperty("webdriver.ie.driver", "/Users/Ameya/tools/selenium/iedriver");
 	}
 	
+	@Parameters("browser")
 	@BeforeTest
-	public void setUp() {	
-		driver = new FirefoxDriver();
+	public void setUp(@Optional("Firefox") String browsername) {	
+		if(browsername.equals("Firefox")) driver = new FirefoxDriver();
+		if(browsername.equals("Chrome")) driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);	
 		driver.manage().window().maximize();
 		driver.get("https://www.gmail.com");
@@ -37,6 +41,8 @@ WebDriver driver;
 	
 	@Test
 	public void verifyPasswordError() {
+		
+		//driver.navigate().to("https://www.gmail.com");
 		
 		driver.findElement(By.name("identifier")).sendKeys("ameya.naik");
 		driver.findElement(By.id("identifierNext")).click();

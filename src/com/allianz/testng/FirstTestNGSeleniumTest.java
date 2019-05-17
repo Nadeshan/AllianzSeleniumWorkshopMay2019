@@ -34,7 +34,7 @@ public class FirstTestNGSeleniumTest {
 		//Test Case Step 2
 		driver.navigate().back();
 		//Test Step 3
-		Assert.assertEquals(driver.getTitle(),"Home - Google");
+		Assert.assertEquals(driver.getTitle(),"Google");
 		//Test Step 4 - Not reachable if Assert above fails
 		driver.navigate().forward();
 	}

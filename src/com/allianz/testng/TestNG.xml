@@ -1,0 +1,7 @@
+<suite name="My First Suite">
+	<test name="Gmail Password Error validation">
+		<classes>
+			<class name="com.allianz.testng.GmailError"/>
+		</classes>
+	</test>
+</suite>

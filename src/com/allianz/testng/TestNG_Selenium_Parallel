@@ -1,0 +1,8 @@
+<suite name="Parallel Selenium Without Grid" parallel="classes" thread-count="2" verbose="3">
+	<test name="Parallel Scripts Without Grid">
+		<classes>
+			<class name="com.allianz.testng.GmailError"/>
+			<class name="com.allianz.testng.FirstTestNGSeleniumTest"/>
+		</classes>
+	</test>
+</suite>
